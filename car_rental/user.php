@@ -24,7 +24,8 @@ if (isset($_POST['add_user'])) {
             $message[] = 'could not add the car';
         }
     }
-};
+}
+;
 
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
@@ -80,7 +81,8 @@ if (isset($_GET['delete'])) {
                 <h3>add a new user</h3>
                 <input type="text" placeholder="enter user fullName" name="user_fullName" class="box">
                 <input type="text" placeholder="enter user adres" name="user_adres" class="box">
-                <input type="number" placeholder="enter user driverLicenseNumber" name="user_driverLicenseNumber" class="box">
+                <input type="number" placeholder="enter user driverLicenseNumber" name="user_driverLicenseNumber"
+                    class="box">
                 <input type="text" placeholder="enter user phoneNumber" name="user_phoneNumber" class="box">
                 <input type="text" placeholder="enter user email" name="user_email" class="box">
                 <input type="password" placeholder="enter user password" name="user_password" class="box">
@@ -144,7 +146,8 @@ if (isset($_GET['delete'])) {
                             <?php echo $row['user_type']; ?>
                         </td>
                         <td>
-                        <a href="edituser.php?id=<?php echo $row['id']; ?>" class="btn"><i class="fas fa-edit"></i>edit</a>
+                            <a href="edituser.php?id=<?php echo $row['id']; ?>" class="btn"><i
+                                    class="fas fa-edit"></i>edit</a>
 
                             <a href="user.php?delete=<?php echo $row['id']; ?>" class="btn"> <i
                                     class="fas fa-delete"></i>delete</a>
@@ -152,7 +155,7 @@ if (isset($_GET['delete'])) {
                         </td>
                     </tr>
 
-                    
+
 
                 <?php }
                 ; ?>

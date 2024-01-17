@@ -48,16 +48,28 @@ $selectRentals = mysqli_query($conn, "SELECT rentals.*, user_form.fullName AS us
                 </thead>
                 <?php
                 while ($row = mysqli_fetch_assoc($selectRentals)) {
-                ?>
+                    ?>
                     <tr>
-                        <td><?php echo $row['userName']; ?></td>
-                        <td><?php echo $row['merk']; ?></td>
-                        <td><?php echo $row['model']; ?></td>
-                        <td><?php echo $row['start_date']; ?></td>
-                        <td><?php echo $row['end_date']; ?></td>
-                        <td><?php echo $row['rental_cost']; ?></td>
+                        <td>
+                            <?php echo $row['userName']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['merk']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['model']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['start_date']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['end_date']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['rental_cost']; ?>
+                        </td>
                     </tr>
-                <?php
+                    <?php
                 }
                 ?>
             </table>

@@ -120,8 +120,7 @@ if (isset($_GET['delete'])) {
                     <tr>
                         <td>
                             <!-- Display the car image -->
-                            <img src="fotos/<?php echo $row['image']; ?>" alt="Car Image" width="100"
-                                height="100">
+                            <img src="fotos/<?php echo $row['image']; ?>" alt="Car Image" width="100" height="100">
                         </td>
                         <td>
                             <?php echo $row['merk']; ?>
@@ -147,7 +146,7 @@ if (isset($_GET['delete'])) {
                         </td>
                     </tr>
 
-                    
+
 
                 <?php }
                 ; ?>

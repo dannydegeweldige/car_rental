@@ -4,39 +4,40 @@
 
 session_start();
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
 
-   $fullName = mysqli_real_escape_string($conn, $_POST['fullName']);
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $pass = md5($_POST['password']);
-   $confirmPassword = md5($_POST['confirmPassword']);
-   $user_type = $_POST['user_type'];
+    $fullName = mysqli_real_escape_string($conn, $_POST['fullName']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pass = md5($_POST['password']);
+    $confirmPassword = md5($_POST['confirmPassword']);
+    $user_type = $_POST['user_type'];
 
-   $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
+    $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
 
-   $result = mysqli_query($conn, $select);
+    $result = mysqli_query($conn, $select);
 
-   if(mysqli_num_rows($result) > 0){
+    if (mysqli_num_rows($result) > 0) {
 
-      $row = mysqli_fetch_array($result);
+        $row = mysqli_fetch_array($result);
 
-      if($row['user_type'] == 'admin'){
+        if ($row['user_type'] == 'admin') {
 
-         $_SESSION['admin_fullName'] = $row['fullName'];
-         header('location:admin.php');
+            $_SESSION['admin_fullName'] = $row['fullName'];
+            header('location:admin.php');
 
-      }elseif($row['user_type'] == 'user'){
+        } elseif ($row['user_type'] == 'user') {
 
-         $_SESSION['user_fullName'] = $row['fullName'];
-         header('location:index.php');
+            $_SESSION['user_fullName'] = $row['fullName'];
+            header('location:index.php');
 
-      }
-     
-   }else{
-      $error[] = 'incorrect email or password!';
-   }
+        }
 
-};
+    } else {
+        $error[] = 'incorrect email or password!';
+    }
+
+}
+;
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +74,7 @@ if(isset($_POST['submit'])){
 
         <?php
 
-        if(isset($_SESSION['user_fullName'])) {
+        if (isset($_SESSION['user_fullName'])) {
             echo '<a href="logout.php" class="btn">Logout</a>';
         } else {
             echo " <div id='login-btn' class='btn'>
@@ -83,7 +84,7 @@ if(isset($_POST['submit'])){
         }
 
         ?>
-       
+
 
     </header>
 

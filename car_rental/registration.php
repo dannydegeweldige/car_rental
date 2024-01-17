@@ -2,37 +2,38 @@
 
 @include 'database.php';
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
 
-   $fullName = mysqli_real_escape_string($conn, $_POST['fullName']);
-   $adres = mysqli_real_escape_string($conn, $_POST['adres']);
-   $driverLicenseNumber = mysqli_real_escape_string($conn, $_POST['driverLicenseNumber']);
-   $phoneNumber = mysqli_real_escape_string($conn, $_POST['phoneNumber']);
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $pass = md5($_POST['password']);
-   $confirmPassword = md5($_POST['confirmPassword']);
-   $user_type = $_POST['user_type'];
+    $fullName = mysqli_real_escape_string($conn, $_POST['fullName']);
+    $adres = mysqli_real_escape_string($conn, $_POST['adres']);
+    $driverLicenseNumber = mysqli_real_escape_string($conn, $_POST['driverLicenseNumber']);
+    $phoneNumber = mysqli_real_escape_string($conn, $_POST['phoneNumber']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pass = md5($_POST['password']);
+    $confirmPassword = md5($_POST['confirmPassword']);
+    $user_type = $_POST['user_type'];
 
-   $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
+    $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
 
-   $result = mysqli_query($conn, $select);
+    $result = mysqli_query($conn, $select);
 
-   if(mysqli_num_rows($result) > 0){
+    if (mysqli_num_rows($result) > 0) {
 
-      $error[] = 'user already exist!';
+        $error[] = 'user already exist!';
 
-   }else{
+    } else {
 
-      if($pass != $confirmPassword){
-         $error[] = 'password not matched!';
-      }else{
-         $insert = "INSERT INTO user_form(fullName, adres, driverLicenseNumber, phoneNumber, email, password, user_type) VALUES('$fullName','$adres','$driverLicenseNumber','$phoneNumber','$email','$pass','$user_type')";
-         mysqli_query($conn, $insert);
-         header('location:index.php');
-      }
-   }
+        if ($pass != $confirmPassword) {
+            $error[] = 'password not matched!';
+        } else {
+            $insert = "INSERT INTO user_form(fullName, adres, driverLicenseNumber, phoneNumber, email, password, user_type) VALUES('$fullName','$adres','$driverLicenseNumber','$phoneNumber','$email','$pass','$user_type')";
+            mysqli_query($conn, $insert);
+            header('location:index.php');
+        }
+    }
 
-};
+}
+;
 
 
 ?>
